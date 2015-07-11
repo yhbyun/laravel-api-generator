@@ -45,6 +45,8 @@ class CommandData
 	/** @var array */
 	public $dynamicVars = [];
 
+	public $tab;
+
 	public static $COMMAND_TYPE_API = 'api';
 	public static $COMMAND_TYPE_SCAFFOLD = 'scaffold';
 	public static $COMMAND_TYPE_SCAFFOLD_API = 'scaffold_api';
@@ -140,7 +142,7 @@ class CommandData
 
 			'$NAMESPACE_MODEL_EXTEND$'   => Config::get('generator.model_extend_class', 'Illuminate\Database\Eloquent\Model'),
 
-			'$SOFT_DELETE_DATES$'        => "\n\tprotected \$dates = ['deleted_at'];\n",
+			'$SOFT_DELETE_DATES$'        => "\n" . Config::get('generator.tab', "\t") . "protected \$dates = ['deleted_at'];\n",
 
 			'$SOFT_DELETE$'              => "use SoftDeletes;\n",
 

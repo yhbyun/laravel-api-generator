@@ -157,9 +157,12 @@ class ViewGenerator implements GeneratorProvider
 
 		$headerFields = "";
 
+		$tab = $this->commandData->tab;
+		$separator = $tab . $tab . $tab;
+
 		foreach($this->commandData->inputFields as $field)
 		{
-			$headerFields .= "<th>" . Str::title(str_replace("_", " ", $field['fieldName'])) . "</th>\n\t\t\t";
+			$headerFields .= "<th>" . Str::title(str_replace("_", " ", $field['fieldName'])) . "</th>\n" . $tab;
 		}
 
 		$headerFields = trim($headerFields);
@@ -170,7 +173,7 @@ class ViewGenerator implements GeneratorProvider
 
 		foreach($this->commandData->inputFields as $field)
 		{
-			$tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $field['fieldName'] . " !!}</td>\n\t\t\t";
+			$tableBodyFields .= "<td>{!! $" . $this->commandData->modelNameCamel . "->" . $field['fieldName'] . " !!}</td>\n" . $tab;
 		}
 
 		$tableBodyFields = trim($tableBodyFields);

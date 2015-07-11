@@ -41,6 +41,8 @@ class MigrationGenerator implements GeneratorProvider
 
 	private function generateFieldsStr()
 	{
+		$tab = $this->commandData->tab;
+
 		$fieldsStr = "\$table->increments('id');\n";
 
 		foreach($this->commandData->inputFields as $field)
@@ -48,10 +50,10 @@ class MigrationGenerator implements GeneratorProvider
 			$fieldsStr .= SchemaGenerator::createField($field['fieldInput']);
 		}
 
-		$fieldsStr .= "\t\t\t\$table->timestamps();";
+		$fieldsStr .= $tab . $tab . $tab . "\$table->timestamps();";
 
 		if($this->commandData->useSoftDelete)
-			$fieldsStr .= "\n\t\t\t\$table->softDeletes();";
+			$fieldsStr .= $tab . $tab . $tab . "\n\$table->softDeletes();";
 
 		return $fieldsStr;
 	}

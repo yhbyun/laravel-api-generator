@@ -104,4 +104,5 @@ return [
 
 	'use_dingo_api'            => false,
 
+	'tab'                      => '    ',
 ];

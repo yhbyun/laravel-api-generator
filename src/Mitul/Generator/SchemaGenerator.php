@@ -2,6 +2,8 @@
 
 namespace Mitul\Generator;
 
+use Config;
+
 class SchemaGenerator
 {
 	public static function createField($field)
@@ -16,7 +18,8 @@ class SchemaGenerator
 
 		$fieldType = array_shift($fieldTypeInputs);
 
-		$fieldStr = "\t\t\t\$table->" . $fieldType . "('" . $fieldName . "'";
+		$tab = Config::get('generator.tab', "\t");
+		$fieldStr = $tab . $tab . $tab . "\$table->" . $fieldType . "('" . $fieldName . "'";
 
 		if(sizeof($fieldTypeInputs) > 0)
 		{

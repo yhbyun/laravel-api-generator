@@ -2,6 +2,7 @@
 
 namespace Mitul\Generator\Commands;
 
+use Config;
 use Exception;
 use Illuminate\Console\Command;
 use Mitul\Generator\CommandData;
@@ -29,6 +30,8 @@ class BaseCommand extends Command
 		$this->commandData->tableName = $this->option('tableName');
 		$this->commandData->skipMigration = $this->option('skipMigration');
 		$this->commandData->fromTable = $this->option('fromTable');
+
+		$this->commandData->tab = Config::get('generator.tab', "\t");
 
 		if($this->commandData->fromTable)
 		{

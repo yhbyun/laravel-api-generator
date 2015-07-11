@@ -59,11 +59,13 @@ class ModelGenerator implements GeneratorProvider
 			$fillables[] = '"' . $field['fieldName'] . '"';
 		}
 
-		$templateData = str_replace('$FIELDS$', implode(",\n\t\t", $fillables), $templateData);
+		$tab = $this->commandData->tab;
 
-		$templateData = str_replace('$RULES$', implode(",\n\t\t", $this->generateRules()), $templateData);
+		$templateData = str_replace('$FIELDS$', implode(",\n" . $tab . $tab , $fillables), $templateData);
 
-		$templateData = str_replace('$CAST$', implode(",\n\t\t", $this->generateCasts()), $templateData);
+		$templateData = str_replace('$RULES$', implode(",\n" . $tab . $tab, $this->generateRules()), $templateData);
+
+		$templateData = str_replace('$CAST$', implode(",\n". $tab . $tab , $this->generateCasts()), $templateData);
 
 		return $templateData;
 	}
