@@ -56,7 +56,10 @@ class ModelGenerator implements GeneratorProvider
 
 		foreach($this->commandData->inputFields as $field)
 		{
-			$fillables[] = '"' . $field['fieldName'] . '"';
+			$fieldName = $field['fieldName'];
+			if ($fieldName !== 'RegDate' && $fieldName !== 'ModDate') {
+				$fillables[] = '"' . $field['fieldName'] . '"';
+			}
 		}
 
 		$tab = $this->commandData->tab;
