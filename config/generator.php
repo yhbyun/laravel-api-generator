@@ -29,6 +29,8 @@ return [
 
 	'path_repository'          => app_path('Libraries/Repositories/'),
 
+	'path_repository_interface'          => app_path('Libraries/Repositories/'),
+
 	'path_controller'          => app_path('Http/Controllers/'),
 
 	'path_api_controller'      => app_path('Http/Controllers/API/'),
@@ -54,6 +56,8 @@ return [
 	'namespace_model'          => 'App\Models',
 
 	'namespace_repository'     => 'App\Libraries\Repositories',
+
+	'namespace_repository_interface'     => 'App\Libraries\Repositories',
 
 	'namespace_controller'     => 'App\Http\Controllers',
 

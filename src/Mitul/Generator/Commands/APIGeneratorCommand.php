@@ -7,6 +7,7 @@ use Mitul\Generator\Generators\API\APIControllerGenerator;
 use Mitul\Generator\Generators\Common\MigrationGenerator;
 use Mitul\Generator\Generators\Common\ModelGenerator;
 use Mitul\Generator\Generators\Common\RepositoryGenerator;
+use Mitul\Generator\Generators\Common\RepositoryInterfaceGenerator;
 use Mitul\Generator\Generators\Common\RoutesGenerator;
 
 class APIGeneratorCommand extends BaseCommand
@@ -54,6 +55,9 @@ class APIGeneratorCommand extends BaseCommand
 
 		$modelGenerator = new ModelGenerator($this->commandData);
 		$modelGenerator->generate();
+
+		$repositoryInterfaceGenerator = new RepositoryInterfaceGenerator($this->commandData);
+		$repositoryInterfaceGenerator->generate();
 
 		$repositoryGenerator = new RepositoryGenerator($this->commandData);
 		$repositoryGenerator->generate();

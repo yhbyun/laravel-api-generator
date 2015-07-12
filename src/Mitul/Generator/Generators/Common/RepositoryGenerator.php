@@ -27,7 +27,7 @@ class RepositoryGenerator implements GeneratorProvider
 
 		$templateData = GeneratorUtils::fillTemplate($this->commandData->dynamicVars, $templateData);
 
-		$fileName = $this->commandData->modelName . "Repository.php";
+		$fileName = $this->commandData->modelName . "Repo.php";
 
 		if(!file_exists($this->path))
 			mkdir($this->path, 0755, true);
