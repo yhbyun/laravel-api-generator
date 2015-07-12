@@ -27,7 +27,7 @@ class APIControllerGenerator implements GeneratorProvider
 
 		$templateData = $this->fillTemplate($templateData);
 
-		$fileName = $this->commandData->modelName . "APIController.php";
+		$fileName = $this->commandData->modelNamePlural . "Controller.php";
 
 		if(!file_exists($this->path))
 			mkdir($this->path, 0755, true);
