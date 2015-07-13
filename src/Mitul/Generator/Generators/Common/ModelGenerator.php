@@ -58,7 +58,7 @@ class ModelGenerator implements GeneratorProvider
 		{
 			$fieldName = $field['fieldName'];
 			if ($fieldName !== 'RegDate' && $fieldName !== 'ModDate') {
-				$fillables[] = '"' . $field['fieldName'] . '"';
+				$fillables[] = '\'' . $field['fieldName'] . '\'';
 			}
 		}
 
@@ -81,7 +81,7 @@ class ModelGenerator implements GeneratorProvider
 		{
 			if(!empty($field['validations']))
 			{
-				$rule = '"' . $field['fieldName'] . '" => "' . $field['validations'] . '"';
+				$rule = '\'' . $field['fieldName'] . '\' => \'' . $field['validations'] . '\'';
 				$rules[] = $rule;
 			}
 		}
@@ -98,21 +98,21 @@ class ModelGenerator implements GeneratorProvider
 			switch($field['fieldType'])
 			{
 				case 'integer':
-					$rule = '"' . $field['fieldName'] . '" => "integer"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'integer\'';
 					break;
 				case 'double':
-					$rule = '"' . $field['fieldName'] . '" => "double"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'double\'';
 					break;
 				case 'float':
-					$rule = '"' . $field['fieldName'] . '" => "float"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'float\'';
 					break;
 				case 'boolean':
-					$rule = '"' . $field['fieldName'] . '" => "boolean"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'boolean\'';
 					break;
 				case 'string':
 				case 'char':
 				case 'text':
-					$rule = '"' . $field['fieldName'] . '" => "string"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'string\'';
 					break;
 				default:
 					$rule = '';

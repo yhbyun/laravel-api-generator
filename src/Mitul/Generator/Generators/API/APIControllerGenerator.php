@@ -49,7 +49,7 @@ class APIControllerGenerator implements GeneratorProvider
 		{
 			$fieldName = $field['fieldName'];
 			if ($fieldName !== 'RegDate' && $fieldName !== 'ModDate') {
-				$fillables[] = '"' . $field['fieldName'] . '"';
+				$fillables[] = '\'' . $field['fieldName'] . '\'';
 			}
 		}
 
@@ -71,16 +71,16 @@ class APIControllerGenerator implements GeneratorProvider
 			switch($field['fieldType'])
 			{
 				case 'integer':
-					$rule = '"' . $field['fieldName'] . '" => "required:integer"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'required:integer\'';
 					break;
 				case 'double':
 				case 'float':
-					$rule = '"' . $field['fieldName'] . '" => "required:numeric"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'required:numeric\'';
 					break;
 				case 'string':
 				case 'char':
 				case 'text':
-					$rule = '"' . $field['fieldName'] . '" => "required"';
+					$rule = '\'' . $field['fieldName'] . '\' => \'required\'';
 					break;
 				default:
 					$rule = '';
