@@ -47,8 +47,7 @@ class APIGeneratorCommand extends BaseCommand
 	{
 		parent::handle();
 
-		if(!$this->commandData->skipMigration)
-		{
+		if (!$this->commandData->skipMigration) {
 			$migrationGenerator = new MigrationGenerator($this->commandData);
 			$migrationGenerator->generate();
 		}
@@ -65,8 +64,10 @@ class APIGeneratorCommand extends BaseCommand
 		$repoControllerGenerator = new APIControllerGenerator($this->commandData);
 		$repoControllerGenerator->generate();
 
-		$routeGenerator = new RoutesGenerator($this->commandData);
-		$routeGenerator->generate();
+		if ($this->confirm("\nDo you want to generate routes? [y|N]", false)) {
+			$routeGenerator = new RoutesGenerator($this->commandData);
+			$routeGenerator->generate();
+		}
 
 		if($this->confirm("\nDo you want to migrate database? [y|N]", false))
 			$this->call('migrate');
