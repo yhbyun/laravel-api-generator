@@ -43,6 +43,7 @@ return [
 
 	'path_api_routes'          => base_path('app/Http/api_routes.php'),
 
+	'path_exception'          => base_path('app/Exceptions/'),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -40,6 +40,8 @@ class PublisherCommand extends Command
 			$this->initAPIRoutes();
 			$this->publishTemplates();
 			$this->publishAppBaseController();
+			$this->publishBaseRepositories();
+			$this->publishExceptions();
 		}
 		elseif($this->option('templates'))
 		{
@@ -49,11 +51,18 @@ class PublisherCommand extends Command
 		{
 			$this->publishAppBaseController();
 		}
+		elseif($this->option('baseRepo'))
+		{
+			$this->publishBaseRepositories();
+			$this->publishExceptions();
+		}
 		else
 		{
 			$this->publishCommonViews();
 			$this->publishAPIRoutes();
 			$this->initAPIRoutes();
+			$this->publishBaseRepositories();
+			$this->publishExceptions();
 		}
 	}
 
@@ -77,6 +86,7 @@ class PublisherCommand extends Command
 		return [
 			['templates', null, InputOption::VALUE_NONE, 'Publish templates'],
 			['baseController', null, InputOption::VALUE_NONE, 'Publish base controller'],
+			['baseRepo', null, InputOption::VALUE_NONE, 'Publish base repositories'],
 			['all', null, InputOption::VALUE_NONE, 'Publish all options'],
 		];
 	}
@@ -139,6 +149,24 @@ class PublisherCommand extends Command
 		$apiRoutesPath = Config::get('generator.path_api_routes', base_path('app/Http/api_routes.php'));
 
 		$this->publishFile($routesPath, $apiRoutesPath, 'api_routes.php');
+	}
+
+	public function publishBaseRepositories()
+	{
+		$repoPath = __DIR__ . '/../../../../templates/scaffold/repositories';
+
+		$repoCopyPath = Config::get('generator.path_repository', base_path('app/Libraries/Repositories/'));
+
+		$this->publishDirectory($repoPath, $repoCopyPath, 'base repos');
+	}
+
+	public function publishExceptions()
+	{
+		$tplPath = __DIR__ . '/../../../../templates/scaffold/exceptions';
+
+		$tplCopyPath = Config::get('generator.path_exception', base_path('app/Exceptions/'));
+
+		$this->publishDirectory($tplPath, $tplCopyPath, 'exceptions');
 	}
 
 	public function publishFile($sourceFile, $destinationFile, $fileName)
