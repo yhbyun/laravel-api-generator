@@ -19,11 +19,19 @@ class GeneratorServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$configPath = __DIR__ . '/../../../config/generator.php';
-
-		$this->publishes([
-			$configPath => config_path('generator.php')
-		]);
+		//Lumen users need to copy the config file over to /config themselves
+		//and it needs to be pulled in with $this->app->configure().
+		if (str_contains($this->app->version(), 'Lumen')) {
+			$this->app->configure('generator');
+		}
+		//Laravel users can run artisan config:publish and config will be
+		//automatically read in with directory scanning.
+		else {
+			$configPath = __DIR__ . '/../../../config/generator.php';
+			$this->publishes([
+				$configPath => config_path('generator.php')
+			]);
+		}
 	}
 
 	/**
