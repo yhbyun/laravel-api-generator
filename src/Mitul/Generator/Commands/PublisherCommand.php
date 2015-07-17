@@ -120,7 +120,7 @@ class PublisherCommand extends Command
 
 		$fileName = "AppBaseController.php";
 
-		$filePath = Config::get('generator.path_controller', app_path('Http/Controllers/'));
+		$filePath = Config::get('generator.path_controller', base_path('app/Http/Controllers/'));
 
 		$fileHelper = new FileHelper();
 		$fileHelper->writeFile($filePath . $fileName, $templateData);
@@ -136,7 +136,7 @@ class PublisherCommand extends Command
 	{
 		$routesPath = __DIR__ . '/../../../../templates/routes/api_routes.stub';
 
-		$apiRoutesPath = Config::get('generator.path_api_routes', app_path('Http/api_routes.php'));
+		$apiRoutesPath = Config::get('generator.path_api_routes', base_path('app/Http/api_routes.php'));
 
 		$this->publishFile($routesPath, $apiRoutesPath, 'api_routes.php');
 	}
@@ -181,7 +181,7 @@ class PublisherCommand extends Command
 	 */
 	private function initAPIRoutes()
 	{
-		$path = Config::get('generator.path_routes', app_path('Http/routes.php'));
+		$path = Config::get('generator.path_routes', base_path('app/Http/routes.php'));
 
 		$fileHelper = new FileHelper();
 		$routeContents = $fileHelper->getFileContents($path);

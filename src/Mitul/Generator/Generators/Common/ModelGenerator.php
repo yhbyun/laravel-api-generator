@@ -18,7 +18,7 @@ class ModelGenerator implements GeneratorProvider
 	function __construct($commandData)
 	{
 		$this->commandData = $commandData;
-		$this->path = Config::get('generator.path_model', app_path('Models/'));
+		$this->path = Config::get('generator.path_model', base_path('app/Models/'));
 	}
 
 	function generate()

@@ -18,7 +18,7 @@ class ViewControllerGenerator implements GeneratorProvider
 	function __construct($commandData)
 	{
 		$this->commandData = $commandData;
-		$this->path = Config::get('generator.path_controller', app_path('Http/Controllers/'));
+		$this->path = Config::get('generator.path_controller', base_path('app/Http/Controllers/'));
 	}
 
 	public function generate()

@@ -18,7 +18,7 @@ class RequestGenerator implements GeneratorProvider
 	function __construct($commandData)
 	{
 		$this->commandData = $commandData;
-		$this->path = Config::get('generator.path_request', app_path('Http/Requests/'));
+		$this->path = Config::get('generator.path_request', base_path('app/Http/Requests/'));
 	}
 
 	public function generate()

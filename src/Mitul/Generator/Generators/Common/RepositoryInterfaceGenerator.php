@@ -18,7 +18,7 @@ class RepositoryInterfaceGenerator implements GeneratorProvider
     function __construct($commandData)
     {
         $this->commandData = $commandData;
-        $this->path = Config::get('generator.path_repository_interface', app_path('/Libraries/Repositories/'));
+        $this->path = Config::get('generator.path_repository_interface', base_path('app//Libraries/Repositories/'));
     }
 
     function generate()
