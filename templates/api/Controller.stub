@@ -98,7 +98,7 @@ class $MODEL_NAME$APIController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function update($id, Request $request)
+	public function update(Request $request, $id)
 	{
 		$input = $request->all();
 
