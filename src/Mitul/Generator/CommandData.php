@@ -14,6 +14,8 @@ class CommandData
 	public $modelNamePlural;
 	public $modelNameCamel;
 	public $modelNamePluralCamel;
+	public $modelNameSnake;
+	public $modelNamePluralSnake;
 	public $modelNamespace;
 
 	public $tableName;
@@ -64,6 +66,8 @@ class CommandData
 		$this->modelNamePlural = Str::plural($this->modelName);
 		$this->modelNameCamel = Str::camel($this->modelName);
 		$this->modelNamePluralCamel = Str::camel($this->modelNamePlural);
+		$this->modelNameSnake = Str::snake($this->modelName);
+		$this->modelNamePluralSnake = Str::snake($this->modelNamePlural);
 		$this->initDynamicVariables();
 	}
 
@@ -110,7 +114,11 @@ class CommandData
 
 			'$MODEL_NAME_PLURAL$'       => $this->modelNamePlural,
 
-			'$MODEL_NAME_PLURAL_CAMEL$' => $this->modelNamePluralCamel
+			'$MODEL_NAME_PLURAL_CAMEL$' => $this->modelNamePluralCamel,
+
+			'$MODEL_NAME_SNAKE$'        => $this->modelNameSnake,
+
+			'$MODEL_NAME_PLURAL_SNAKE$' => $this->modelNamePluralSnake,
 		]);
 
 		if($this->tableName)
