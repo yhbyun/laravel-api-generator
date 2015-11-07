@@ -117,5 +117,5 @@ return [
 
 	'tab'                      => '    ',
 
-	'schema_field_naming'      => 'snake',  // snake or camel
+	'schema_field_naming'      => 'snake',  // snake, camel, studly
 ];
