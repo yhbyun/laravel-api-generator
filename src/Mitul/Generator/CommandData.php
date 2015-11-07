@@ -129,8 +129,22 @@ class CommandData
 
 		if($this->tableName)
 			$this->dynamicVars['$TABLE_NAME$'] = $this->tableName;
-		else
-			$this->dynamicVars['$TABLE_NAME$'] = $this->modelNamePluralCamel;
+		else {
+			$naming = Config::get('generator.schema_table_naming', 'camel');
+			switch ($naming) {
+				case 'camel':
+					$this->dynamicVars['$TABLE_NAME$'] = $this->modelNamePluralCamel;
+					break;
+
+				case 'snake':
+					$this->dynamicVars['$TABLE_NAME$'] = $this->modelNamePluralSnake;
+					break;
+
+				case 'studly':
+					$this->dynamicVars['$TABLE_NAME$'] = $this->modelNamePluralStudly;
+					break;
+			}
+		}
 	}
 
 	public function addDynamicVariable($name, $val)

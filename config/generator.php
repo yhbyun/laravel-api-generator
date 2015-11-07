@@ -117,5 +117,7 @@ return [
 
 	'tab'                      => '    ',
 
+	'schema_table_naming'      => 'camel',  // snake, camel, studly
+
 	'schema_field_naming'      => 'snake',  // snake, camel, studly
 ];
