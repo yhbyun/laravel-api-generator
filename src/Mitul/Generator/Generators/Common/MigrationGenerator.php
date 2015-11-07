@@ -30,7 +30,7 @@ class MigrationGenerator implements GeneratorProvider
 
 		$templateData = str_replace('$FIELDS$', $this->generateFieldsStr(), $templateData);
 
-		$fileName = date('Y_m_d_His') . "_" . "create_" . $this->commandData->modelNamePluralCamel . "_table.php";
+		$fileName = date('Y_m_d_His') . "_" . "create_" . $this->commandData->modelNamePluralSnake . "_table.php";
 
 		$path = $this->path . $fileName;
 
@@ -41,9 +41,12 @@ class MigrationGenerator implements GeneratorProvider
 
 	private function generateFieldsStr()
 	{
+		$naming = Config::get('generator.schema_field_naming', 'snake');
+
 		$tab = $this->commandData->tab;
 
-		$fieldsStr = "\$table->increments('id');\n";
+		$pkField = $naming === 'snake' ? 'id' : 'ID';
+		$fieldsStr = "\$table->increments('{$pkField}');\n";
 
 		foreach($this->commandData->inputFields as $field)
 		{
